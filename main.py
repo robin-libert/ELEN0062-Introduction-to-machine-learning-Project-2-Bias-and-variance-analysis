@@ -13,7 +13,8 @@ def make_data(n_sample):
     y = np.random.randint(low = -1, high = 1, size = n_sample)
     y[y == 0] = 1
     
-    std_dev = 0.1
+    var = 0.1
+    std_dev = np.sqrt(var)
     neg_mean = 1
     pos_mean = 2
     
@@ -30,6 +31,17 @@ def make_data(n_sample):
             X[i][1] = pos_normal_distrib[i] * np.sin(uniform_distrib[i])
     return X, y
 
+def error(X, y):
+    y1 = []
+    for e in X:
+        if np.sqrt(e[0]**2+e[1]**2) <= 1.5:
+            y1.append(-1)
+        else:
+            y1.append(1)
+    y1 = np.asarray(y1)
+    error = np.mean(y != y1)
+    return error
+
 def plot_datas(X, y):
     plt.title("Datas question 1")
     plt.xlabel("X_0")
@@ -40,5 +52,6 @@ def plot_datas(X, y):
     
         
 if __name__ == "__main__":
-    X, y = make_data(1000)
+    X, y = make_data(10000)
     plot_datas(X, y)
+    print(error(X, y))
