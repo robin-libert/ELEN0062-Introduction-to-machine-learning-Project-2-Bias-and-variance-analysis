@@ -294,7 +294,7 @@ def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     noise_fig = fig.add_subplot(111)
     noise_fig.plot(complexity, noise)
-    noise_fig.set(title='Noise linear', xlabel='complexity')
+    noise_fig.set(title='Noise linear', xlabel='alpha')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/noise_linear_plot.pdf")
     plt.show()
@@ -303,7 +303,7 @@ def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     bias_fig = fig.add_subplot(111)
     bias_fig.plot(complexity,bias)
-    bias_fig.set(title='Squared Bias linear', xlabel='complexity')
+    bias_fig.set(title='Squared Bias linear', xlabel='alpha')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/bias_linear_plot.pdf")
     plt.show()
@@ -312,7 +312,7 @@ def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     variance_fig = fig.add_subplot(111)
     variance_fig.plot(complexity,variance)
-    variance_fig.set(title='Variance linear', xlabel='complexity')
+    variance_fig.set(title='Variance linear', xlabel='alpha')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/variance_linear_plot.pdf")
     plt.show()
@@ -321,7 +321,7 @@ def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     error_fig = fig.add_subplot(111)
     error_fig.plot(complexity,error)
-    error_fig.set(title='Error linear', xlabel='complexity')
+    error_fig.set(title='Error linear', xlabel='alpha')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/error_linear_plot.pdf")
     plt.show()
@@ -340,7 +340,7 @@ def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     noise_fig = fig.add_subplot(111)
     noise_fig.plot(complexity, noise)
-    noise_fig.set(title='Noise non linear', xlabel='complexity')
+    noise_fig.set(title='Noise non linear', xlabel='number of neighbors')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/noise_non_linear_plot.pdf")
     plt.show()
@@ -349,7 +349,7 @@ def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     bias_fig = fig.add_subplot(111)
     bias_fig.plot(complexity,bias)
-    bias_fig.set(title='Squared Bias non linear', xlabel='complexity')
+    bias_fig.set(title='Squared Bias non linear', xlabel='number of neighbors')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/bias_non_linear_plot.pdf")
     plt.show()
@@ -358,7 +358,7 @@ def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     variance_fig = fig.add_subplot(111)
     variance_fig.plot(complexity,variance)
-    variance_fig.set(title='Variance non linear', xlabel='complexity')
+    variance_fig.set(title='Variance non linear', xlabel='number of neighbors')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/variance_non_linear_plot.pdf")
     plt.show()
@@ -367,7 +367,7 @@ def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     fig = plt.figure()
     error_fig = fig.add_subplot(111)
     error_fig.plot(complexity,error)
-    error_fig.set(title='Error non linear', xlabel='complexity')
+    error_fig.set(title='Error non linear', xlabel='number of neighbors')
     fig.tight_layout()
     plt.savefig("images/mean_values_by_complexity/error_non_linear_plot.pdf")
     plt.show()
@@ -467,7 +467,7 @@ def plot_non_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexit
     
 if __name__ == "__main__":
 
-    """n_data = 1000
+    n_data = 1000
     n_training = int(n_data/10)
     X, y = make_data(n_data, 0)
     X_training, y_training = X[0:n_training], y[0:n_training]
@@ -475,13 +475,13 @@ if __name__ == "__main__":
     
     
     prediction_linear_regression = linear_regression(X_training, y_training, X_testing, y_testing, plot=True)
-    prediction_knn = knn(X_training, y_training, X_testing, y_testing, neighbors=5, plot=True)"""
+    prediction_knn = knn(X_training, y_training, X_testing, y_testing, neighbors=5, plot=True)
     
     #plot_error(200,1000) 
-    #plot_linear_mean_by_size(100,1000,100)
-    #plot_non_linear_mean_by_size(100,1000,100)
-    #plot_linear_mean_by_complexity([1,2,5,10,30,100,1000])
-    #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,1000])
+    #plot_linear_mean_by_size(100,1100,100)
+    #plot_non_linear_mean_by_size(100,1100,100)
+    plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
+    #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_linear_mean_by_irrelevant_variables([0,1,5,10,100])
     #plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,100])
     
