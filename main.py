@@ -467,7 +467,7 @@ def plot_non_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexit
     
 if __name__ == "__main__":
 
-    """n_data = 1000
+    n_data = 1000
     n_training = int(n_data/10)
     X, y = make_data(n_data, 0)
     X_training, y_training = X[0:n_training], y[0:n_training]
@@ -475,12 +475,12 @@ if __name__ == "__main__":
     
     
     prediction_linear_regression = linear_regression(X_training, y_training, X_testing, y_testing, plot=True)
-    prediction_knn = knn(X_training, y_training, X_testing, y_testing, neighbors=5, plot=True)"""
+    prediction_knn = knn(X_training, y_training, X_testing, y_testing, neighbors=5, plot=True)
     
     #plot_error(200,1000) 
     #plot_linear_mean_by_size(100,1100,100)
     #plot_non_linear_mean_by_size(100,1100,100)
-    plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
+    #plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_linear_mean_by_irrelevant_variables([0,1,5,10,100])
     #plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,100])
