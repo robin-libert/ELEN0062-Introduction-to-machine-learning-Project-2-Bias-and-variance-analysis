@@ -11,9 +11,17 @@ from sklearn.linear_model import Ridge
 from sklearn.neighbors import KNeighborsRegressor
 
 def f(x):
+    """
+        Function wich takes x as an input and return the desired output given in our project assesment
+    """
     return np.sin(x) * np.exp(-((np.square(x))/16)) + (1/10) * np.random.normal(0,1,np.size(x))
 
 def make_data(n_sample, n_xj):
+    """
+        n_sample: the number of objects sample we want
+        n_xj: the number of irrelevant variables for each objects
+        return our datas where X is the input matrix and y the output matrix
+    """
     X = np.zeros((n_sample, n_xj+1))
     xr = np.random.uniform(-10, 10, n_sample)
     X[:,0] = xr
@@ -57,6 +65,14 @@ def knn(X_training, y_training, X_testing, y_testing=None, neighbors=1, plot=Fal
     return prediction
 
 def linear_estimator(x, N, N_ls, complexity=0, xj = 0):
+    """
+        x: the desired x we want to compute
+        N: the number of sample we use
+        N_ls: the size of our samples
+        [optional] complexity: the size of the alpha parameter for the linear regression
+        [optional] xj: the number of irrelevant variables
+        return the squared bias, the variance, the noise and the error at a given x
+    """
     hb = np.ones(N)
     noise = np.ones(N)
     y_ls = np.ones(N)
@@ -482,6 +498,6 @@ if __name__ == "__main__":
     #plot_non_linear_mean_by_size(100,1100,100)
     #plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
-    #plot_linear_mean_by_irrelevant_variables([0,1,5,10,100])
+    plot_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
     #plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,100])
     
