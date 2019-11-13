@@ -93,6 +93,13 @@ def linear_estimator(x, N, N_ls, complexity=0, xj = 0):
     return bias, variance, noise, error
 
 def linear_mean_estimator(N, N_ls, xj, complexity=0):
+    """
+        N: the number of sample we use
+        N_ls: the size of our samples
+        [optional] xj: the number of irrelevant variables
+        [optional] complexity: the size of the alpha parameter for the linear regression
+        return the mean squared bias, the mean variance, the mean noise and the mean error at a given x
+    """
     x0 = np.arange(-10, 10, 0.1)
     x = np.ones((len(x0), xj+1))
     x[:,0] = x0
@@ -107,6 +114,14 @@ def linear_mean_estimator(N, N_ls, xj, complexity=0):
     return np.mean(bias), np.mean(variance), np.mean(noise), np.mean(error)
     
 def non_linear_estimator(x,N,N_ls,complexity=1, xj=0):
+    """
+        x: the desired x we want to compute
+        N: the number of sample we use
+        N_ls: the size of our samples
+        [optional] complexity: the size of the number of neighbors of K-NN
+        [optional] xj: the number of irrelevant variables
+        return the squared bias, the variance, the noise and the error at a given x
+    """
     hb = np.ones(N)
     noise = np.ones(N)
     y_ls = np.ones(N)
@@ -127,6 +142,13 @@ def non_linear_estimator(x,N,N_ls,complexity=1, xj=0):
     return bias, variance, noise, error
 
 def non_linear_mean_estimator(N, N_ls, xj, complexity=1):
+    """
+        N: the number of sample we use
+        N_ls: the size of our samples
+        [optional] xj: the number of irrelevant variables
+        [optional] complexity: the size of the number of neighbors of K-NN
+        return the mean squared bias, the mean variance, the mean noise and the mean error at a given x
+    """
     x0 = np.arange(-10, 10, 0.1)
     x = np.ones((len(x0), xj+1))
     x[:,0] = x0
@@ -498,6 +520,6 @@ if __name__ == "__main__":
     #plot_non_linear_mean_by_size(100,1100,100)
     #plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
-    plot_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
-    #plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,100])
+    #plot_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
+    plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
     
