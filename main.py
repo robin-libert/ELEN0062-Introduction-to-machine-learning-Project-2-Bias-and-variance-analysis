@@ -2,7 +2,7 @@
 """
 Created on Fri Oct 25 10:09:04 2019
 
-@author: USER
+@author: Leloup Emeline, Libert Robin
 """
 
 import numpy as np
@@ -163,6 +163,14 @@ def non_linear_mean_estimator(N, N_ls, xj, complexity=1):
     return np.mean(bias), np.mean(variance), np.mean(noise), np.mean(error)
 
 def plot_error(N, N_ls, xj=0, neighbors=1, alpha=0):
+    """
+        Plot the noise, the squared bias, the variance and the error for the linear and the non linear method.
+        N: the number of sample we considered for our computation
+        N_ls: the size of the sample
+        [optional]xj: the number of irrelevant variables we add to our data
+        [optional]neighbors: the number of neighbors for the non linear method
+        [optional]alpha: the size of the alpha for the regression
+    """
     x0 = np.arange(-10, 10, 0.1)
     x = np.ones((len(x0), xj+1))
     x[:,0] = x0
@@ -228,6 +236,15 @@ def plot_error(N, N_ls, xj=0, neighbors=1, alpha=0):
     plt.close()
     
 def plot_linear_mean_by_size(minSize, maxSize, step, N=100, xj=0, complexity=0):
+    """
+        Plot the mean noise, squared bias, variance and error for the linear method, for a given number of computation.
+        minSize: the minimum size we allowed for our sample of data
+        maxSize: the maximum size we allowed for ou sample of data
+        step: the number of steps in order not to consider all different size of data between minSize and maxSize. (The computation would be too long)
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]xj: the number of irrelevant variables
+        [optional]complexity: the size of alpha
+    """
     size = int(np.abs(minSize-maxSize)/step)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -274,6 +291,15 @@ def plot_linear_mean_by_size(minSize, maxSize, step, N=100, xj=0, complexity=0):
     plt.close()
     
 def plot_non_linear_mean_by_size(minSize, maxSize, step, N=100, xj=0, complexity=1):
+    """
+        Plot the mean noise, squared bias, variance and error for the non linear method, for a given number of computation.
+        minSize: the minimum size we allowed for our sample of data
+        maxSize: the maximum size we allowed for ou sample of data
+        step: the number of steps in order not to consider all different size of data between minSize and maxSize. (The computation would be too long)
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]xj: the number of irrelevant variables
+        [optional]complexity: the number of neighbors for K-NN
+    """
     size = int(np.abs(minSize-maxSize)/step)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -320,6 +346,13 @@ def plot_non_linear_mean_by_size(minSize, maxSize, step, N=100, xj=0, complexity
     plt.close()
     
 def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
+    """
+        Plot the mean noise, squared bias, variance and error for the linear method, for a given number of computation.
+        complexity: a list containing float which are the desired size of alpha we want to test
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]N_ls: the size of the samples we tested
+        [optional]xj: the number of irrelevant variables
+    """
     size = len(complexity)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -366,6 +399,13 @@ def plot_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     plt.close()
     
 def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
+    """
+        Plot the mean noise, squared bias, variance and error for the linear method, for a given number of computation.
+        complexity: a list containing float which are the desired number of neighbors we want to test
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]N_ls: the size of the samples we tested
+        [optional]xj: the number of irrelevant variables
+    """
     size = len(complexity)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -412,6 +452,13 @@ def plot_non_linear_mean_by_complexity(complexity, N=100, N_ls=1000, xj=0):
     plt.close()
     
 def plot_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexity=0):
+    """
+        Plot the mean noise, squared bias, variance and error for the linear method, for a given number of computation.
+        xj: a list containing int which are the number of irrelevant variables
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]N_ls: the size of the samples we tested
+        [optional]complexity: the size of alpha for the regression
+    """
     size = len(xj)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -458,6 +505,13 @@ def plot_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexity=0)
     plt.close()
     
 def plot_non_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexity=1):
+    """
+        Plot the mean noise, squared bias, variance and error for the linear method, for a given number of computation.
+        xj: a list containing int which are the number of irrelevant variables
+        [optional]N: the number of sample we considered to compute the mean
+        [optional]N_ls: the size of the samples we tested
+        [optional]complexity: the number of neighbors for K-NN
+    """
     size = len(xj)
     bias = np.ones(size)
     variance = np.ones(size)
@@ -504,7 +558,10 @@ def plot_non_linear_mean_by_irrelevant_variables(xj, N_ls=1000, N=100, complexit
     plt.close()
     
 if __name__ == "__main__":
-
+    #some code in order to visualize our data
+    #the size of the testing set equals 900
+    #the size of the training set is 100
+    #plot our models and our predictions
     n_data = 1000
     n_training = int(n_data/10)
     X, y = make_data(n_data, 0)
@@ -515,11 +572,14 @@ if __name__ == "__main__":
     prediction_linear_regression = linear_regression(X_training, y_training, X_testing, y_testing, plot=True)
     prediction_knn = knn(X_training, y_training, X_testing, y_testing, neighbors=5, plot=True)
     
+    #uncomment a function in order to plot and save the result
+    #each function takes several minutes to compute, particulari if you increase the paramaters values
+    
     #plot_error(200,1000) 
     #plot_linear_mean_by_size(100,1100,100)
     #plot_non_linear_mean_by_size(100,1100,100)
     #plot_linear_mean_by_complexity([0,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_non_linear_mean_by_complexity([1,2,5,10,30,100,200,300,400,500,600,700,800,900,1000])
     #plot_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
-    plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
+    #plot_non_linear_mean_by_irrelevant_variables([0,1,5,10,20,30,40,50,60,70,80,90,100])
     
